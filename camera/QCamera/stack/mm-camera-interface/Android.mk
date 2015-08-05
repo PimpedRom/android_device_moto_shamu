@@ -18,7 +18,10 @@ ifeq ($(strip $(TARGET_USES_ION)),true)
     LOCAL_CFLAGS += -DUSE_ION
 endif
 
-LOCAL_CFLAGS += -D_ANDROID_
+LOCAL_CFLAGS += -D_ANDROID_ \
+                 -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize -ffast-math -funswitch-loops \
+	             -mtune=cortex-a15 \
+	             -O3
 LOCAL_COPY_HEADERS_TO := mm-camera-interface
 LOCAL_COPY_HEADERS := inc/mm_camera_interface.h
 LOCAL_COPY_HEADERS += ../common/cam_list.h

@@ -5,7 +5,10 @@ include $(CLEAR_VARS)
 
 DLOPEN_LIBMMCAMERA:=0
 
-LOCAL_CFLAGS:= -DDLOPEN_LIBMMCAMERA=$(DLOPEN_LIBMMCAMERA)
+LOCAL_CFLAGS:= -DDLOPEN_LIBMMCAMERA=$(DLOPEN_LIBMMCAMERA) \
+               -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize -ffast-math -funswitch-loops \
+	           -mtune=cortex-a15 \
+	           -O3
 
 ifeq ($(strip $(TARGET_USES_ION)),true)
         LOCAL_CFLAGS += -DUSE_ION
