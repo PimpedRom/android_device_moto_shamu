@@ -538,6 +538,8 @@ service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023  /mnt/media_rw/usbdisk /
 
 on property:sys.boot_completed=1
     start qcom-post-boot
+    chmod 444 /dev/erandom
+    chmod 444 /dev/frandom
 
 on property:ro.debuggable=1
     start ss_ramdump
